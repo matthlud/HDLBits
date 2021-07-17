@@ -1,12 +1,14 @@
-// synthesis verilog_input_version verilog_2001
-module top_module(
-    input a, 
-    input b,
-    output wire out_assign,
-    output reg out_alwaysblock
-);
+module top_module (
+    input [7:0] a, b, c, d,
+    output [7:0] min);//
+
+    // assign intermediate_result1 = compare? true: false;
+    wire [7:0] e;
+    wire [7:0] f;
     
-	assign out_assign = a & b;
-	always @(*) out_alwaysblock = a & b;    
-  
+    assign e = (a<b) ? a : b;
+    assign f = (c<d) ? c : d;
+    
+    assign min = (e<f) ? e : f;
+
 endmodule

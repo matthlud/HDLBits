@@ -1,12 +1,7 @@
-// synthesis verilog_input_version verilog_2001
-module top_module(
-    input a, 
-    input b,
-    output wire out_assign,
-    output reg out_alwaysblock
-);
+module top_module (
+    input [7:0] in,
+    output parity); 
     
-	assign out_assign = a & b;
-	always @(*) out_alwaysblock = a & b;    
-  
+    assign parity = ^ in[7:0];
+
 endmodule

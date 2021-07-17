@@ -1,12 +1,14 @@
-// synthesis verilog_input_version verilog_2001
-module top_module(
-    input a, 
-    input b,
-    output wire out_assign,
-    output reg out_alwaysblock
-);
+module top_module( 
+    input [254:0] in,
+    output [7:0] out );
     
-	assign out_assign = a & b;
-	always @(*) out_alwaysblock = a & b;    
-  
+    integer i;
+    always @ (in) begin 
+        out = 0;
+        for(i = 0; i < 255; i = i + 1) begin
+            if (in[i] == 1'b1) 
+    			out = out + 1;
+        end                
+    end
+
 endmodule
